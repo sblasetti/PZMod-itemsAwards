@@ -1,15 +1,26 @@
 Awards = Awards or {}
 Awards.Options = Awards.Options or {}
 
-local itemsAwards = {
-    {Item = "Base.CopperCoin", Number = 50, Count = 1, zkills = 1, onZombie = false}, -- Copper Coin
-}
+local itemsAwards = {}
+
+local function AwardsItemsServerSync(mod, command, args)
+    if mod ~= ModName or command ~= ServerCommands.SYNC_AWARDS_LIST then
+        return
+    end
+
+    itemsAwards = args.items or {}
+    print("Awards list sync'ed. Total: " .. tostring(#itemsAwards))
+end
 
 local function ZombKilled(zombie)
 
     local attacker = zombie:getAttackedBy()
 
     if attacker == nil or not instanceof(attacker, "IsoPlayer") or attacker:getVehicle() ~= nil then
+        return
+    end
+
+    if #itemsAwards == 0 then
         return
     end
 
@@ -89,4 +100,5 @@ local function ZombKilled(zombie)
     end
 end
 
+Events.OnServerCommand.Add(AwardsItemsServerSync)
 Events.OnZombieDead.Add(ZombKilled)
