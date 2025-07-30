@@ -6,7 +6,7 @@ local itemsAwards = {}
 function AwardsItemsServerSync(args)
     print("ItemsAwards (client) - Sync awards list")
     itemsAwards = args and args.items or {}
-    print("ItemsAwards (client) - Awards list sync'ed. Total: " .. tostring(#itemsAwards))
+    print("ItemsAwards (client) - Awards list sync'ed. Total: ", #itemsAwards)
 end
 
 local function ZombKilled(zombie)

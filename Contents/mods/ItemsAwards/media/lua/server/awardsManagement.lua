@@ -34,20 +34,5 @@ function SaveAwardsList(args)
     print("ItemsAwards - SaveAwardsList (server) - items saved")
 
     -- refresh awards list on all players
-    SyncAwardsListWithAllPlayers()
-end
-
-function SyncAwardsListWithAllPlayers()
-    print("ItemsAwards - SyncAwardsListToAllPlayers (server) - refresh all clients (", #awardsListData.items, ")")
-    sendServerCommand(ModName, ServerCommands.SYNC_AWARDS_LIST, {
-        items = awardsListData.items
-    })
-end
-
-function SyncAwardsListWithPlayer(playerObj, args)
-    print("ItemsAwards - SyncAwardsListWithPlayer (server) - refresh player", playerObj:getUsername(), "(",
-        #awardsListData.items, ")")
-    sendServerCommand(playerObj, ModName, ServerCommands.SYNC_AWARDS_LIST, {
-        items = awardsListData.items
-    })
+    ModData.transmit(ModDataKeys.AWARDS_LIST)
 end
