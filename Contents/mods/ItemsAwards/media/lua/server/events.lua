@@ -1,4 +1,5 @@
-local function onServerStarted()
+local function onInitGlobalModData()
+    print("ItemsAwards - onInitGlobalModData (server)")
     LoadAwardsList()
 end
 
@@ -21,5 +22,6 @@ local function onClientCommand(mod, command, playerObj, args)
     print("ItemsAwards - onClientCommand (server) - handler processing finished")
 end
 
-Events.OnServerStarted.Add(onServerStarted)
 Events.OnClientCommand.Add(onClientCommand)
+-- https://github.com/MrBounty/PZ-Mod---Doc/blob/main/How%20to%20use%20global%20modData.md
+Events.OnInitGlobalModData.Add(onInitGlobalModData)

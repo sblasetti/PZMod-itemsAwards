@@ -3,7 +3,7 @@ local serverCommandHandlers = {
 }
 
 local function onServerCommand(mod, command, args)
-    print("ItemsAwards - server command received: " .. mod .. " " .. command)
+    print("ItemsAwards - server command received: ", mod, command)
 
     if mod ~= ModName then
         -- another mod's command, ignoring

@@ -4,8 +4,9 @@ Awards.Options = Awards.Options or {}
 local itemsAwards = {}
 
 function AwardsItemsServerSync(args)
-    itemsAwards = args.items or {}
-    print("Awards list sync'ed. Total: " .. tostring(#itemsAwards))
+    print("ItemsAwards (client) - Sync awards list")
+    itemsAwards = args and args.items or {}
+    print("ItemsAwards (client) - Awards list sync'ed. Total: " .. tostring(#itemsAwards))
 end
 
 local function ZombKilled(zombie)
