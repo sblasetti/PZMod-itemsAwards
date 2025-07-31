@@ -36,28 +36,4 @@ local function onClientCommand(mod, command, playerObj, args)
     print("ItemsAwards (debug) - handler processing finished")
 end
 
-local function onReceiveGlobalModData(key, data)
-    -- server scripts are also loaded by clients, so we check that this is running on server
-    if (isClient()) then return end
-
-    if (key == ModDataKeys.AWARDS_LIST and data) then
-        print("ItemsAwards (debug) - (debug) preparing awards to save")
-        local awards = {}
-        for i = 1, #data.items do
-            local item = data.items[i]
-            print("ItemsAwards (debug) - item: ", item)
-            table.insert(awards, {
-                Item = item,
-                Number = i,
-                Count = 1,
-                zkills = 1,
-                onZombie = false
-            })
-        end
-
-        SaveAwardsList({ items = awards })
-    end
-end
-
 Events.OnClientCommand.Add(onClientCommand)
-Events.OnReceiveGlobalModData.Add(onReceiveGlobalModData)
