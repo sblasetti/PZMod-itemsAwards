@@ -3,20 +3,8 @@ require "ISUI/ISButton"
 AwardsAdminButton = ISButton:derive("AwardsAdminButton")
 AwardsAdminButton.instance = nil
 
-function AwardsAdminButton:new(x, y, width, height)
-    local o = ISButton:new(x, y, width, height, "", nil, function()
-        --     if awardsWelcomeWindow and awardsWelcomeWindow:isVisible() then
-        --         awardsWelcomeWindow:setVisible(false)
-        --         awardsWelcomeWindow:removeFromUIManager()
-        --     else
-        --         if not awardsWelcomeWindow then
-        --             CreateWelcomeWindow()
-        --         else
-        --             awardsWelcomeWindow:setVisible(true)
-        --             awardsWelcomeWindow:addToUIManager()
-        --         end
-        --     end
-    end)
+function AwardsAdminButton:new(x, y, width, height, onClick)
+    local o = ISButton:new(x, y, width, height, "", nil, onClick)
 
     setmetatable(o, self)
     self.__index = self
