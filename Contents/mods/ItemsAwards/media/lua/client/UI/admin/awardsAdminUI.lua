@@ -57,4 +57,10 @@ local function onGameStart()
     createAdminButtonInstance()
 end
 
+function AddAwardToAdminUI(_item)
+    if awardsAdminWindow then
+        awardsAdminWindow:addAward(_item)
+    end
+end
+
 Events.OnGameStart.Add(onGameStart)

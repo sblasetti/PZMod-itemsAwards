@@ -7,6 +7,11 @@ function AwardsItemsServerSync(args)
     print("ItemsAwards (client) - Sync awards list")
     itemsAwards = args and args.items or {}
     print("ItemsAwards (client) - Awards list sync'ed. Total: ", #itemsAwards)
+    for i = 1, #itemsAwards do
+        local item = itemsAwards[i]
+        AddAwardToAdminUI(item)
+    end
+    print("ItemsAwards (client) - Awards added to admin UI")
 end
 
 local function ZombKilled(zombie)
