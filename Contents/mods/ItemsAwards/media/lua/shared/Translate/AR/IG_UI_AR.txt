@@ -3,4 +3,5 @@ IGUI_AR = {
     IGUI_LoseItem = "[Items Awards]: Tu número fue: %d. ¡Sigue intentando!",
     IGUI_YouNeedMoreKills = "[Items Awards]: Ganaste con %d, pero el premio requiere mas kills: %d",
     IGUI_awards_admin_button_tooltip = "Abrir/Cerrar Ventana de Configuración",
+    IGUI_add_award = "Agregar premio",
 }

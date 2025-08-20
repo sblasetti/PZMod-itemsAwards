@@ -29,16 +29,6 @@ function AwardsAdminUI:create()
     self.awardsList:setOnMouseDoubleClick(self, self.onAwardDoubleClick)
     self:addChild(self.awardsList)
 
-    -- self.losersList = ISScrollingListBox:new(10, self.awardsList:getY() + self.awardsList:getHeight() + 10,
-    --     self.width - 20, 110)
-    -- self.losersList:initialise()
-    -- self.losersList:instantiate()
-    -- self.losersList.itemheight = 22
-    -- self.awardsList.selected = 0
-    -- self.losersList.font = UIFont.NewSmall
-    -- self.losersList.doDrawItem = self.drawLoserItem
-    -- self:addChild(self.losersList)
-
     self.closeButton = ISButton:new(
         self.width - 490,
         self.awardsList:getY() + self.awardsList:getHeight() + 10,
@@ -46,22 +36,22 @@ function AwardsAdminUI:create()
         btnHeight,
         getText("UI_Close"),
         self,
-        AwardsWelcomeUI.onCloseClick
+        AwardsAdminUI.onCloseClick
     )
 
     self:addChild(self.closeButton)
 
-    -- self.cleanButton = ISButton:new(
-    --     self.closeButton:getX() + btnWidth + 10,
-    --     self.losersList:getY() + self.losersList:getHeight() + 10,
-    --     btnWidth,
-    --     btnHeight,
-    --     getText("UI_clean"),
-    --     self,
-    --     AwardsWelcomeUI.onCleanClick
-    -- )
+    self.addAwardButton = ISButton:new(
+        self.closeButton:getX() + btnWidth + 10,
+        self.awardsList:getY() + self.awardsList:getHeight() + 10,
+        btnWidth,
+        btnHeight,
+        getText("IGUI_add_award"),
+        self,
+        AwardsAdminUI.onAddAwardClick
+    )
 
-    -- self:addChild(self.cleanButton)
+    self:addChild(self.addAwardButton)
 
     -- self.cleanLoserButton = ISButton:new(
     --     self.cleanButton:getX() + btnWidth + 10,
@@ -115,13 +105,6 @@ function AwardsAdminUI:onCloseClick()
     self:removeFromUIManager()
 end
 
-function AwardsAdminUI:onAddClick()
-end
-
--- function AwardsAdminUI:onCleanClick()
---     self.awardsList:clear()
--- end
-
 -- function AwardsAdminUI:onCleanLoserClick()
 --     self.losersList:clear()
 -- end
@@ -163,6 +146,14 @@ end
 --         self.losersList:removeItemByIndex(self.losersList:size())
 --     end
 -- end
+
+function AwardsAdminUI:onAddAwardClick()
+    -- Hard-coded award item for demonstration
+    local hardCodedAward = {
+        Item = "Base.Axe" -- Example item type, change as needed
+    }
+    self:addAward(hardCodedAward)
+end
 
 function AwardsAdminUI:new(x, y, width, height)
     local o = {}
